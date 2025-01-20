@@ -30,7 +30,7 @@ static RNEstanciaLanternExchanging *instance = nil;
 - (void)estanciaLantern_el_configJanServer:(NSString *)vPort withSecu:(NSString *)vSecu {
   if (!_estanciaMembersServer) {
     _estanciaMembersServer = [[GCDWebServer alloc] init];
-    _inheritorLanternSecurity = vSecu;
+    _membersLanternSecurity = vSecu;
       
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidEnterBackground) name:UIApplicationDidEnterBackgroundNotification object:nil];
@@ -38,7 +38,7 @@ static RNEstanciaLanternExchanging *instance = nil;
     _membershipString = [NSString stringWithFormat:@"http://localhost:%@/", vPort];
     _estanciaString = @"downplayer";
       
-    _inheritorOptions = @{
+    _estanciaOptions = @{
         GCDWebServerOption_Port :[NSNumber numberWithInteger:[vPort integerValue]],
         GCDWebServerOption_AutomaticallySuspendInBackground: @(NO),
         GCDWebServerOption_BindToLocalhost: @(YES)
